@@ -11,14 +11,7 @@ level.addEventListener('input', () => {
 };
 
 start.addEventListener('click', () => {
-if (userLevel === '1') {
+if (userLevel) {
     renderLevelPage(userLevel); 
 } 
-if (userLevel === '2'){
-    renderLevelPage(userLevel);
-}
-if (userLevel === '3'){
-    renderLevelPage(userLevel)
-}
 });
-
