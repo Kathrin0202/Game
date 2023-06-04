@@ -10,6 +10,9 @@
     url("/fonts/Webfonts/stratosskyengweb-regular.woff2") format("woff2"),
     url("./fonts/Webfonts/stratosskyengweb-regular.woff") format("woff");
 }
+body{
+    font-family: "StratosSkyeng";
+}
 .top{
    background-color: #004980;
    display: flex;
