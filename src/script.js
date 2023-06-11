@@ -1,4 +1,6 @@
 import { renderLevelPage } from './levelPage.js'
+import './css/index.css'
+
 const levels = document.querySelectorAll('.radio')
 const start = document.querySelector('.start')
 let userLevel = null
