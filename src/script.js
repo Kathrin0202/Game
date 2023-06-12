@@ -1,6 +1,9 @@
 import { renderLevelPage } from './levelPage.js'
+import './css/index.css'
+
 const levels = document.querySelectorAll('.radio')
 const start = document.querySelector('.start')
+const box = document.querySelector('.top')
 let userLevel = null
 
 for (const level of levels) {
@@ -11,7 +14,13 @@ for (const level of levels) {
 }
 
 start.addEventListener('click', () => {
-    if (userLevel) {
-        renderLevelPage(userLevel)
+    if (userLevel === '1') {
+        renderLevelPage(box, '6')
+    }
+    if (userLevel === '2') {
+        renderLevelPage(box, '12')
+    }
+    if (userLevel === '3') {
+        renderLevelPage(box, '18')
     }
 })

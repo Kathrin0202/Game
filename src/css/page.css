@@ -7,15 +7,17 @@
     font-style: normal;
     font-weight: 400;
     src: local('StratosSkyeng'),
-        url('/fonts/Webfonts/stratosskyengweb-regular.woff2') format('woff2'),
-        url('./fonts/Webfonts/stratosskyengweb-regular.woff') format('woff');
+        url('./asset/fonts/Webfonts/stratosskyengweb-regular.woff2')
+            format('woff2'),
+        url('./asset/fonts/Webfonts/stratosskyengweb-regular.woff')
+            format('woff');
 }
 
 body {
     font-family: StratosSkyeng, sans-serif;
 }
 
-.top {
+.tops {
     background-color: #004980;
 }
 
