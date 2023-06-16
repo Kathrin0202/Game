@@ -84,7 +84,7 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                     <button class="start-again">Играть снова</button>
                     </div>
                     </div>`
-                    box.innerHTML = looser
+                    box.innerHTML! = looser
                     let buttonAgain = document.querySelector('.start-again')
                     buttonAgain!.addEventListener('click', () => {
                         startPage()
@@ -101,7 +101,7 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                     <button class="start-again">Играть снова</button>
                     </div>
                     </div>`
-                    box.innerHTML = winner
+                    box.innerHTML! = winner
                     let buttonAgain = document.querySelector('.start-again')
                     buttonAgain!.addEventListener('click', () => {
                         startPage()
