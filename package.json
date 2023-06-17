@@ -5,8 +5,8 @@
     "scripts": {
         "test": "jest",
         "format": "prettier —-write ./src/",
-        "lint:css": "stylelint ./**.css",
-        "lint:js": "eslint ./**.js",
+        "lint:css": "stylelint ./**.css --fix",
+        "lint:js": "eslint ./**.js --fix",
         "lint": "npm run lint:js && npm run lint:css",
         "prepare": "husky install",
         "build": "NODE_ENV=production webpack",

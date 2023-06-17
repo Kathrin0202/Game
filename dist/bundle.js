@@ -87,7 +87,10 @@
                                 (e.textContent = '00.00'),
                                 clearInterval(u)
                         })
-            }, 1e3)
+            }, 1e3),
+            m = function () {
+                clearInterval(u)
+            }
         Array.from(document.querySelectorAll('.card')).forEach(function (n) {
             n.addEventListener('click', function () {
                 if (
@@ -97,7 +100,7 @@
                     ),
                     i)
                 )
-                    if (((c = n.dataset.value), i !== c)) {
+                    if ((m(), (c = n.dataset.value), i !== c)) {
                         var e =
                             '<div class="container-end">\n                    <div class="text">\n                    <div><img class="image"src="./static/asset/jpg/looser.png" alt="looser"></div>\n                    <h1 class="title-end">Вы проиграли!</h1>\n                    </div>\n                    <div class="text-end">Затраченное время:</div>\n                    <div class="time-end">'.concat(
                                 r,
@@ -110,6 +113,7 @@
                                     a()
                                 })
                     } else {
+                        m()
                         var s =
                             '<div class="container-end">\n                    <div class="text">\n                    <div><img class="image"src="./static/asset/jpg/winner.png" alt="winner"></div>\n                    <h1 class="title-end">Вы проиграли!</h1>\n                    </div>\n                    <div class="text-end">Затраченное время:</div>\n                    <div class="time-end">'.concat(
                                 r,

@@ -43,22 +43,27 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
         })
     }, 5000)
     let time = 0
-    let timer = setInterval(() => {
+    const timer = setInterval(() => {
         time++
         const minutes = Math.floor(time / 60)
             .toString()
             .padStart(2, '0')
         const seconds = (time % 60).toString().padStart(2, '0')
-        const gameTimer = document.querySelector('.time')
-        gameTimer!.textContent = `${minutes}.${seconds}`
-        myTime = gameTimer!.innerHTML
-        const buttonStart = document.querySelector('.buttonstart')
-        buttonStart!.addEventListener('click', () => {
+        const gameTimer = document.querySelector('.time') as HTMLElement
+        gameTimer.textContent = `${minutes}.${seconds}`
+        myTime = gameTimer.innerHTML
+        const buttonStart = document.querySelector(
+            '.buttonstart'
+        ) as HTMLElement
+        buttonStart.addEventListener('click', () => {
             time = 0
-            gameTimer!.textContent! = '00.00'
+            gameTimer.textContent = '00.00'
             clearInterval(timer)
         })
     }, 1000)
+    const stopTimer = (): void => {
+        clearInterval(timer)
+    }
     const card: HTMLInputElement[] = Array.from(
         document.querySelectorAll('.card')
     )
@@ -71,9 +76,10 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
             if (!firstCard) {
                 firstCard = car.dataset.value
             } else {
+                stopTimer()
                 secondCard = car.dataset.value
                 if (firstCard !== secondCard) {
-                    let looser = `<div class="container-end">
+                    const looser = `<div class="container-end">
                     <div class="text">
                     <div><img class="image"src="./static/asset/jpg/looser.png" alt="looser"></div>
                     <h1 class="title-end">Вы проиграли!</h1>
@@ -84,13 +90,16 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                     <button class="start-again">Играть снова</button>
                     </div>
                     </div>`
-                    box.innerHTML! = looser
-                    let buttonAgain = document.querySelector('.start-again')
-                    buttonAgain!.addEventListener('click', () => {
+                    box.innerHTML = looser
+                    const buttonAgain = document.querySelector(
+                        '.start-again'
+                    ) as HTMLElement
+                    buttonAgain.addEventListener('click', () => {
                         startPage()
                     })
                 } else {
-                    let winner = `<div class="container-end">
+                    stopTimer()
+                    const winner = `<div class="container-end">
                     <div class="text">
                     <div><img class="image"src="./static/asset/jpg/winner.png" alt="winner"></div>
                     <h1 class="title-end">Вы проиграли!</h1>
@@ -102,8 +111,10 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                     </div>
                     </div>`
                     box.innerHTML = winner
-                    let buttonAgain = document.querySelector('.start-again')
-                    buttonAgain!.addEventListener('click', () => {
+                    const buttonAgain: HTMLElement = document.querySelector(
+                        '.start-again'
+                    ) as HTMLElement
+                    buttonAgain.addEventListener('click', () => {
                         startPage()
                     })
                 }

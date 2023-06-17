@@ -5,9 +5,9 @@ export function startPage() {
     const levels: HTMLInputElement[] = Array.from(
         document.querySelectorAll('.radio')
     )
-    const start = document.querySelector('.start')
+    const start = document.querySelector('.start') as HTMLElement
     const box = document.querySelector('.top') as HTMLElement
-    let userLevel: String | null
+    let userLevel: string | null
 
     for (const level of levels) {
         level.addEventListener('input', () => {
@@ -16,7 +16,7 @@ export function startPage() {
         })
     }
 
-    start!.addEventListener('click', () => {
+    start.addEventListener('click', () => {
         if (userLevel === '1') {
             renderLevelPage(box, 6)
         }
