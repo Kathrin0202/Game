@@ -51,11 +51,11 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
         const seconds = (time % 60).toString().padStart(2, '0')
         const gameTimer = document.querySelector('.time')
         gameTimer!.textContent = `${minutes}.${seconds}`
-        myTime = gameTimer!.textContent
+        myTime = gameTimer!.innerHTML
         const buttonStart = document.querySelector('.buttonstart')
         buttonStart!.addEventListener('click', () => {
             time = 0
-            gameTimer!.textContent = '00.00'
+            gameTimer!.textContent! = '00.00'
             clearInterval(timer)
         })
     }, 1000)
@@ -101,7 +101,7 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                     <button class="start-again">Играть снова</button>
                     </div>
                     </div>`
-                    box.innerHTML! = winner
+                    box.innerHTML = winner
                     let buttonAgain = document.querySelector('.start-again')
                     buttonAgain!.addEventListener('click', () => {
                         startPage()

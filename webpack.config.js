@@ -34,9 +34,6 @@ module.exports = {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
             },
-            {
-                'declaration-block-single-line-max-declarations': 1,
-            },
         ],
     },
     resolve: {
