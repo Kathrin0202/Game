@@ -1,7 +1,8 @@
 import { renderLevelPage } from './levelPage'
 import './css/index.css'
-import * as _ from 'lodash'
-export function startPage() {
+import 'lodash'
+
+export const startPage = () => {
     const levels: HTMLInputElement[] = Array.from(
         document.querySelectorAll('.radio')
     )
@@ -16,14 +17,12 @@ export function startPage() {
         })
     }
 
-    start.addEventListener('click', () => {
+    start?.addEventListener('click', () => {
         if (userLevel === '1') {
             renderLevelPage(box, 6)
-        }
-        if (userLevel === '2') {
+        } else if (userLevel === '2') {
             renderLevelPage(box, 12)
-        }
-        if (userLevel === '3') {
+        } else {
             renderLevelPage(box, 18)
         }
     })

@@ -6,13 +6,12 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
     let firstCard: string | undefined
     let secondCard: string | undefined
     let myTime = ''
-    for (let i = 0; i <= cardsCount; i++) {
+    for (let i = 0; i < cardsCount; i++) {
         const random = cards[Math.floor(Math.random() * cards.length)]
         openHtml += `
         <div data-index="${i}">
         <img data-value="${random}"class="card" src='./static/asset/jpg/${random}.jpg' alt='${random}'/>
         </div>`
-        cards.splice(cards.indexOf(random), 1)
     }
     const headHtml = `
     <header class="head">
@@ -86,36 +85,33 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                     </div>
                     <div class="text-end">Затраченное время:</div>
                     <div class="time-end">${myTime}</div>
-                    <div class="again">
-                    <button class="start-again">Играть снова</button>
-                    </div>
+                    <button class="startagain">Играть снова</button>
                     </div>`
                     box.innerHTML = looser
                     const buttonAgain = document.querySelector(
-                        '.start-again'
+                        '.startagain'
                     ) as HTMLElement
                     buttonAgain.addEventListener('click', () => {
-                        startPage()
+                        console.log('hello')
+                        return startPage()
                     })
                 } else {
-                    stopTimer()
                     const winner = `<div class="container-end">
                     <div class="text">
                     <div><img class="image"src="./static/asset/jpg/winner.png" alt="winner"></div>
-                    <h1 class="title-end">Вы проиграли!</h1>
+                    <h1 class="title-end">Вы выиграли!</h1>
                     </div>
                     <div class="text-end">Затраченное время:</div>
                     <div class="time-end">${myTime}</div>
-                    <div class="again">
-                    <button class="start-again">Играть снова</button>
-                    </div>
+                    <button class="startagain">Играть снова</button>
                     </div>`
                     box.innerHTML = winner
-                    const buttonAgain: HTMLElement = document.querySelector(
-                        '.start-again'
+                    const buttonAgain = document.querySelector(
+                        '.startagain'
                     ) as HTMLElement
                     buttonAgain.addEventListener('click', () => {
-                        startPage()
+                        console.log('hello')
+                        return startPage()
                     })
                 }
             }
