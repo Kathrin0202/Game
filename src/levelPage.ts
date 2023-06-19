@@ -6,11 +6,13 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
     let firstCard: string | undefined
     let secondCard: string | undefined
     let myTime = ''
-    for (let i = 0; i < cardsCount; i++) {
-        const random = cards[Math.floor(Math.random() * cards.length)]
+    for (let i = 0; i < cardsCount / 2; i++) {
+        const randomCard = cards[Math.floor(Math.random() * cards.length)]
+        const random = randomCard
         openHtml += `
         <div data-index="${i}">
         <img data-value="${random}"class="card" src='./static/asset/jpg/${random}.jpg' alt='${random}'/>
+        <img data-value="${randomCard}"class="card" src='./static/asset/jpg/${randomCard}.jpg' alt='${randomCard}'/>
         </div>`
     }
     const headHtml = `
