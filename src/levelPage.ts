@@ -6,15 +6,21 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
     let firstCard: string | undefined
     let secondCard: string | undefined
     let myTime = ''
+    let random: string[] = []
     for (let i = 0; i < cardsCount / 2; i++) {
         const randomCard = cards[Math.floor(Math.random() * cards.length)]
-        const random = randomCard
-        openHtml += `
-        <div data-index="${i}">
-        <img data-value="${random}"class="card" src='./static/asset/jpg/${random}.jpg' alt='${random}'/>
-        <img data-value="${randomCard}"class="card" src='./static/asset/jpg/${randomCard}.jpg' alt='${randomCard}'/>
-        </div>`
+        random.push(randomCard)
     }
+    random = random.concat(random)
+    random.sort(() => Math.random() - 0.5)
+    openHtml = random
+        .map(
+            (card) => `
+        <div data-index="${card}">
+        <img data-value="${card}"class="card" src='./static/asset/jpg/${card}.jpg' alt='${card}'/>
+        </div>`
+        )
+        .join('')
     const headHtml = `
     <header class="head">
     <div class="timetable">
@@ -94,7 +100,6 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                         '.startagain'
                     ) as HTMLElement
                     buttonAgain.addEventListener('click', () => {
-                        console.log('hello')
                         return startPage()
                     })
                 } else {
@@ -112,7 +117,6 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                         '.startagain'
                     ) as HTMLElement
                     buttonAgain.addEventListener('click', () => {
-                        console.log('hello')
                         return startPage()
                     })
                 }
