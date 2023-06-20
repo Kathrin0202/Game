@@ -82,3 +82,76 @@ body {
     gap: 15px;
     margin: 35px;
 }
+
+.title-end {
+    font-family: StratosSkyeng, sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #004980;
+}
+
+.text-end {
+    font-family: StratosSkyeng, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #000;
+}
+
+.time-end {
+    font-family: StratosSkyeng, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    color: #000;
+    padding-bottom: 40px;
+}
+
+.container-end {
+    margin-top: 157px;
+    width: 480px;
+    height: 459px;
+    left: 272px;
+    top: 158px;
+    background: #c2f5ff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 28px;
+}
+
+.image {
+    height: 96px;
+    width: 96px;
+}
+
+.startagain {
+    background: #7ac100;
+    border-radius: 12px;
+    width: 246px;
+    height: 48px;
+    left: 389px;
+    top: 519px;
+    font-family: StratosSkyeng, sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #fff;
+    border-color: transparent;
+}

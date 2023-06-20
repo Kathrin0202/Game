@@ -1,4 +1,4 @@
-export let cards = [
+export const cards = [
     '6 бубны',
     '6 крести',
     '6 пики',

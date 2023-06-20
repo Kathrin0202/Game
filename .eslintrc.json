@@ -4,15 +4,23 @@
         "es6": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
     "plugins": ["prettier"],
     "parserOptions": {
         "ecmaVersion": 2020,
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": true
     },
     "rules": {
         "prettier/prettier": "error",
         "camelcase": ["error"],
-        "eqeqeq": ["error", "always"]
+        "eqeqeq": ["error", "always"],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-non-null-assertion": "off"
     }
 }
