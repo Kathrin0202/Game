@@ -3,8 +3,6 @@ import './css/page.css'
 import { startPage } from './script'
 export function renderLevelPage(box: HTMLElement, cardsCount: number) {
     let openHtml = ''
-    let firstCard: string | undefined
-    let secondCard: string | undefined
     let myTime = ''
     let random: string[] = []
     for (let i = 0; i < cardsCount / 2; i++) {
@@ -66,6 +64,7 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
             time = 0
             gameTimer.textContent = '00.00'
             clearInterval(timer)
+            startPage()
         })
     }, 1000)
     const stopTimer = (): void => {
@@ -74,7 +73,9 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
     const card: HTMLInputElement[] = Array.from(
         document.querySelectorAll('.card')
     )
-    card.forEach((car) => {
+    let count = 0
+    let firstCard: string | undefined
+    card.forEach((car: HTMLElement) => {
         car.addEventListener('click', () => {
             car.setAttribute(
                 'src',
@@ -83,9 +84,35 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
             if (!firstCard) {
                 firstCard = car.dataset.value
             } else {
-                stopTimer()
-                secondCard = car.dataset.value
-                if (firstCard !== secondCard) {
+                let secondCard = car.dataset.value
+                count += 1
+                if (firstCard.charAt(0) === secondCard?.charAt(0)) {
+                    firstCard = ''
+                    secondCard = car.dataset.value
+                    count += 1
+                    console.log(count)
+                    console.log(cardsCount)
+                    if (cardsCount === count) {
+                        stopTimer()
+                        const winner = `<div class="container-end">
+                    <div class="text">
+                    <div><img class="image"src="./static/asset/jpg/winner.png" alt="winner"></div>
+                    <h1 class="title-end">Вы выиграли!</h1>
+                    </div>
+                    <div class="text-end">Затраченное время:</div>
+                    <div class="time-end">${myTime}</div>
+                    <button class="startagain">Играть снова</button>
+                    </div>`
+                        box.innerHTML = winner
+                        const buttonAgain = document.querySelector(
+                            '.startagain'
+                        ) as HTMLElement
+                        buttonAgain.addEventListener('click', () => {
+                            return startPage()
+                        })
+                    }
+                } else {
+                    stopTimer()
                     const looser = `<div class="container-end">
                     <div class="text">
                     <div><img class="image"src="./static/asset/jpg/looser.png" alt="looser"></div>
@@ -96,23 +123,6 @@ export function renderLevelPage(box: HTMLElement, cardsCount: number) {
                     <button class="startagain">Играть снова</button>
                     </div>`
                     box.innerHTML = looser
-                    const buttonAgain = document.querySelector(
-                        '.startagain'
-                    ) as HTMLElement
-                    buttonAgain.addEventListener('click', () => {
-                        return startPage()
-                    })
-                } else {
-                    const winner = `<div class="container-end">
-                    <div class="text">
-                    <div><img class="image"src="./static/asset/jpg/winner.png" alt="winner"></div>
-                    <h1 class="title-end">Вы выиграли!</h1>
-                    </div>
-                    <div class="text-end">Затраченное время:</div>
-                    <div class="time-end">${myTime}</div>
-                    <button class="startagain">Играть снова</button>
-                    </div>`
-                    box.innerHTML = winner
                     const buttonAgain = document.querySelector(
                         '.startagain'
                     ) as HTMLElement
